@@ -4,14 +4,14 @@ import SplashScreen from "./game/splash.mjs";
 import { FIRST_PLAYER, SECOND_PLAYER } from "./consts.mjs";
 import createMenu from "./utils/menu.mjs";
 import createMapLayoutScreen from "./game/mapLayoutScreen.mjs";
-import createInnBetweenScreen from "./game/innbetweenScreen.mjs";
+import createThroughScreen from "./game/throughScreen.mjs";
 import createBattleshipScreen from "./game/battleshipsScreen.mjs";
 
 const MAIN_MENU_ITEMS = buildMenu();
 
 const GAME_FPS = 1000 / 60; // The theoretical refresh rate of our game engine
 let currentState = null;    // The current active state in our finite-state machine.
-let gameLoop = null;        // Variable that keeps a refrence to the interval id assigned to our game loop 
+let gameLoop = null;        // Variable that keeps a reference to the interval id assigned to our game loop 
 
 let mainMenuScene = null;
 
@@ -33,7 +33,7 @@ function update() {
     }
 }
 
-// Suport / Utility functions ---------------------------------------------------------------
+// Support / Utility functions ---------------------------------------------------------------
 
 function buildMenu() {
     let menuItemCount = 0;
@@ -41,15 +41,15 @@ function buildMenu() {
         {
             text: "Start Game", id: menuItemCount++, action: function () {
                 clearScreen();
-                let through = createInnBetweenScreen();
-                through.init(`SHIP PLACMENT\nFirst player get ready.\nPlayer two look away`, () => {
+                let through = createThroughScreen();
+                through.init(`SHIP PLACEMENT\nFirst player get ready.\nPlayer two look away`, () => {
 
                     let p1map = createMapLayoutScreen();
                     p1map.init(FIRST_PLAYER, (player1ShipMap) => {
 
 
-                        let through = createInnBetweenScreen();
-                        through.init(`SHIP PLACMENT\nSecond player get ready.\nPlayer one look away`, () => {
+                        let through = createThroughScreen();
+                        through.init(`SHIP PLACEMENT\nSecond player get ready.\nPlayer one look away`, () => {
                             let p2map = createMapLayoutScreen();
                             p2map.init(SECOND_PLAYER, (player2ShipMap) => {
                                 return createBattleshipScreen(player1ShipMap, player2ShipMap);

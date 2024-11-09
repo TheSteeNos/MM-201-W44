@@ -1,6 +1,6 @@
 import { print, printCenterd } from "../utils/io.mjs";
 
-function createInnBetweenScreen() {
+function createThroughScreen() {
     return {
         isDrawn: false,
         next: null,
@@ -33,4 +33,4 @@ function createInnBetweenScreen() {
     }
 }
 
-export default createInnBetweenScreen;
+export default createThroughScreen;
