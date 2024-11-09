@@ -20,7 +20,7 @@ function createInnBetweenScreen() {
             this.displayTime -= dt;
             if (this.displayTime <= 0) {
                 this.next = this.transitionFn();
-                this.transitionTo = "Transitioning away from innbetween screen"
+                this.transitionTo = "Transitioning away from through screen"
             }
         },
 

@@ -41,28 +41,28 @@ function buildMenu() {
         {
             text: "Start Game", id: menuItemCount++, action: function () {
                 clearScreen();
-                let innbetween = createInnBetweenScreen();
-                innbetween.init(`SHIP PLACMENT\nFirst player get ready.\nPlayer two look away`, () => {
+                let through = createInnBetweenScreen();
+                through.init(`SHIP PLACMENT\nFirst player get ready.\nPlayer two look away`, () => {
 
                     let p1map = createMapLayoutScreen();
                     p1map.init(FIRST_PLAYER, (player1ShipMap) => {
 
 
-                        let innbetween = createInnBetweenScreen();
-                        innbetween.init(`SHIP PLACMENT\nSecond player get ready.\nPlayer one look away`, () => {
+                        let through = createInnBetweenScreen();
+                        through.init(`SHIP PLACMENT\nSecond player get ready.\nPlayer one look away`, () => {
                             let p2map = createMapLayoutScreen();
                             p2map.init(SECOND_PLAYER, (player2ShipMap) => {
                                 return createBattleshipScreen(player1ShipMap, player2ShipMap);
                             })
                             return p2map;
                         });
-                        return innbetween;
+                        return through;
                     });
 
                     return p1map;
 
                 }, 3);
-                currentState.next = innbetween;
+                currentState.next = through;
                 currentState.transitionTo = "Map layout";
             }
         },

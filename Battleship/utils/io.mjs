@@ -76,12 +76,12 @@ function calculateStringBounds(str) {
     let height = lines.length;
 
     for (const line of lines) {
-        const lenght = line.length
-        if (lenght < minLineLength) {
-            minLineLength = lenght;
+        const length = line.length
+        if (length < minLineLength) {
+            minLineLength = length;
         }
-        if (lenght > maxLineLength) {
-            maxLineLength = lenght;
+        if (length > maxLineLength) {
+            maxLineLength = length;
         }
     }
 
