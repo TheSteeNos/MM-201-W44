@@ -6,7 +6,7 @@ Your work must build upon the code given.
 2. **Multilingual Support:** The game must support at least two languages, with players able to select their preferred language through a menu.
 3. **Bug:** There is a bug in the mapLayoutScreen, fix it.  
 4. **Full Game Playability:** Complete the "battleshipsScreen" to enable the player to experience a full game of Battleships, following the existing architecture.
-5. **Refactor:** as allways clean and fix
+5. **Refactor:** as always clean and fix
 
 All necessary techniques for completing this task have been demonstrated in class and are available in the current codebase. Best of luck!
 
@@ -14,7 +14,7 @@ All necessary techniques for completing this task have been demonstrated in clas
 
 1. **Window Resizing Option:** Instead of exiting when the console window is too small, offer players the option to resize to an optimal resolution.
 2. **Animated Splash Screen:** Add animations to the splash screen to make the game feel more dynamic.
-3. **Player vs. Computer Mode:** Extend gameplay to include a player-versus-computer option.
+3. **Player vs. Computer Mode:** Extend game-play to include a player-versus-computer option.
 
 **Things to ponder:**
 - *Why isn’t the map layout centered?*
