@@ -1,7 +1,7 @@
 import { ANSI } from "./utils/ansi.mjs";
 import { print, clearScreen } from "./utils/io.mjs";
 import SplashScreen from "./game/splash.mjs";
-import { FIRST_PLAYER, SECOND_PLAYER } from "./consts.mjs";
+import { FIRST_PLAYER, SECOND_PLAYER } from "./const.mjs";
 import createMenu from "./utils/menu.mjs";
 import createMapLayoutScreen from "./game/mapLayoutScreen.mjs";
 import createThroughScreen from "./game/throughScreen.mjs";
@@ -66,7 +66,14 @@ function buildMenu() {
                 currentState.transitionTo = "Map layout";
             }
         },
-        { text: "Exit Game", id: menuItemCount++, action: function () { print(ANSI.SHOW_CURSOR); clearScreen(); process.exit(); } },
+        {
+            text: "Settings", id: menuItemCount++, action: function () {
+
+            }
+        },
+        { 
+            text: "Exit Game", id: menuItemCount++, action: function () { print(ANSI.SHOW_CURSOR); clearScreen(); process.exit(); }
+        },
     ];
 }
 

@@ -1,4 +1,4 @@
-import { GAME_BOARD_DIM } from "../consts.mjs";
+import { GAME_BOARD_DIM } from "../const.mjs";
 import { ANSI } from "../utils/ansi.mjs";
 import { print, clearScreen } from "../utils/io.mjs";
 import units from "./units.mjs";
@@ -60,7 +60,7 @@ function createMapLayoutScreen() {
             for (let i = 0; i < ship.size; i++) {
                 const column = this.isHorizontal ? this.cursorColumn + i : this.cursorColumn;
                 const row = this.isHorizontal ? this.cursorRow : this.cursorRow + i;
-                this.map[row][column] = ship.symbole;
+                this.map[row][column] = ship.symbol;
             }
 
             this.placedShips.push({
