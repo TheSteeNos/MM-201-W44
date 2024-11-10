@@ -6,7 +6,10 @@ import createMenu from "./utils/menu.mjs";
 import createMapLayoutScreen from "./game/mapLayoutScreen.mjs";
 import createThroughScreen from "./game/throughScreen.mjs";
 import createBattleshipScreen from "./game/battleshipsScreen.mjs";
+import { LANGUAGE } from "./utils/languages.mjs";
+import { language, setLanguage } from  "./utils/unilanguage.mjs"
 
+setLanguage(LANGUAGE.EN);
 const MAIN_MENU_ITEMS = buildMenu();
 
 const GAME_FPS = 1000 / 60; // The theoretical refresh rate of our game engine
@@ -39,17 +42,17 @@ function buildMenu() {
     let menuItemCount = 0;
     return [
         {
-            text: "Start Game", id: menuItemCount++, action: function () {
+            text: language.START, id: menuItemCount++, action: function () {
                 clearScreen();
                 let through = createThroughScreen();
-                through.init(`SHIP PLACEMENT\nFirst player get ready.\nPlayer two look away`, () => {
+                through.init(language.PREP.PLAYER1, () => {
 
                     let p1map = createMapLayoutScreen();
                     p1map.init(FIRST_PLAYER, (player1ShipMap) => {
 
 
                         let through = createThroughScreen();
-                        through.init(`SHIP PLACEMENT\nSecond player get ready.\nPlayer one look away`, () => {
+                        through.init(language.PREP.PLAYER2, () => {
                             let p2map = createMapLayoutScreen();
                             p2map.init(SECOND_PLAYER, (player2ShipMap) => {
                                 return createBattleshipScreen(player1ShipMap, player2ShipMap);
@@ -63,18 +66,46 @@ function buildMenu() {
 
                 }, 3);
                 currentState.next = through;
-                currentState.transitionTo = "Map layout";
+                currentState.transitionTo = language.MAPLAYOUT;
             }
         },
         {
-            text: "Settings", id: menuItemCount++, action: function () {
-
+            text: language.SETTINGS, id: menuItemCount++, action: function () {
+                clearScreen();
+                currentState.next = createLanguageSelectionMenu();
+                currentState.transitionTo = language.SETTINGS;
             }
         },
         { 
-            text: "Exit Game", id: menuItemCount++, action: function () { print(ANSI.SHOW_CURSOR); clearScreen(); process.exit(); }
+            text: language.EXIT, id: menuItemCount++, action: function () { print(ANSI.SHOW_CURSOR); clearScreen(); process.exit(); }
         },
     ];
 }
 
-
+function createLanguageSelectionMenu() {
+    return createMenu([
+        {
+            text: ANSI.COLOR.BLUE + language.OPT.EN + ANSI.RESET, id: 0, action: function () {
+                setLanguage(LANGUAGE.EN); // Update the language
+                mainMenuScene = createMenu(buildMenu()); // Rebuild the main menu with the updated language
+                currentState.next = mainMenuScene;
+                currentState.transitionTo = language.MENU;
+            }
+        },
+        {
+            text: ANSI.COLOR.RED + language.OPT.NO + ANSI.RESET, id: 1, action: function () {
+                setLanguage(LANGUAGE.NO); // Update the language globally (without `let`)
+                mainMenuScene = createMenu(buildMenu()); // Rebuild the main menu with the updated language
+                currentState.next = mainMenuScene;
+                currentState.transitionTo = language.MENU;
+            }
+        },
+        {
+            text: language.BACK, id: 2, action: function () {
+                mainMenuScene = createMenu(buildMenu());
+                currentState.next = mainMenuScene;
+                currentState.transitionTo = language.MENU;
+            }
+        }
+    ]);
+}

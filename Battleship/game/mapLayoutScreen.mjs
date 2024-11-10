@@ -4,6 +4,8 @@ import { print, clearScreen } from "../utils/io.mjs";
 import units from "./units.mjs";
 import KeyBoardManager from "../utils/io.mjs";
 import { create2DArrayWithFill } from "../utils/array.mjs"
+import { LANGUAGE } from "../utils/languages.mjs";
+import { language } from "../utils/unilanguage.mjs";
 
 ANSI.SEA__AND_SHIP = '\x1b[38;5;83;48;5;39m';
 ANSI.SEA = '\x1b[48;5;39m';
@@ -137,7 +139,7 @@ function createMapLayoutScreen() {
             clearScreen();
 
 
-            let output = `${ANSI.TEXT.BOLD}${ANSI.COLOR.YELLOW}Ship Placement Phase\n\n${ANSI.TEXT.BOLD_OFF}${ANSI.RESET}`;
+            let output = "";
 
             output += '  ';
             for (let i = 0; i < GAME_BOARD_DIM; i++) {
@@ -177,23 +179,20 @@ function createMapLayoutScreen() {
             }
             output += '\n\n';
 
-            output += `${ANSI.TEXT.BOLD}${ANSI.COLOR.YELLOW}Controls:${ANSI.TEXT.BOLD_OFF}${ANSI.RESET}\n`;
-            output += 'Arrow keys: Move cursor\n';
-            output += 'R: Rotate ship\n';
-            output += 'Enter: Place ship\n';
+            output += language.OUTPUT.CONTROLS;
+            output += language.OUTPUT.MOVEMENT;
+            output += language.OUTPUT.ROTATE;
+            output += language.OUTPUT.CONFIRM;
 
-            output += `\n${ANSI.TEXT.BOLD}${ANSI.COLOR.YELLOW}Ships to place:${ANSI.TEXT.BOLD_OFF}${ANSI.RESET}\n`;
+            output += language.PLACEABLE;
             this.ships.forEach((ship, index) => {
                 const status = index < this.currentShipIndex ? '✓' :
                     index === this.currentShipIndex ? '>' : ' ';
-                output += `${status} ${ship.id} (${ship.size} spaces)\n`;
+                output += `${status} ${ship.id} (${ship.size} ` + language.SPACES + ')\n';
             });
 
             print(output);
         }
-
-
-
 
     }
 
