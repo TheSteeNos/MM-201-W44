@@ -12,6 +12,17 @@ const LANGUAGE = {
         SHIPPHASE: `${ANSI.TEXT.BOLD}${ANSI.COLOR.YELLOW}Ship Placement Phase\n\n${ANSI.TEXT.BOLD_OFF}${ANSI.RESET}`,
         PLACEABLE: `\n${ANSI.TEXT.BOLD}${ANSI.COLOR.YELLOW}Ships to place:${ANSI.TEXT.BOLD_OFF}${ANSI.RESET}\n`,
         SPACES: `spaces`,
+        TURNS: {
+            P1: "Player 1's Turn!",
+            P2: "Player 2's Turn!'"
+        },
+        PLAYER: "Player",
+        HIT: "Hit!",
+        MISS: "Miss!",
+        WINNER: {
+             P1: "Player 1 wins!",
+             P2: "Player 2 wins!"
+        },
         OUTPUT: {
             CONTROLS: `${ANSI.TEXT.BOLD}${ANSI.COLOR.YELLOW}Controls:${ANSI.TEXT.BOLD_OFF}${ANSI.RESET}\n`,
             MOVEMENT: 'Arrow keys: Move cursor\n',
@@ -38,6 +49,17 @@ const LANGUAGE = {
         SHIPPHASE: `${ANSI.TEXT.BOLD}${ANSI.COLOR.YELLOW}Skip Plasserings Fase\n\n${ANSI.TEXT.BOLD_OFF}${ANSI.RESET}`,
         PLACEABLE: `\n${ANSI.TEXT.BOLD}${ANSI.COLOR.YELLOW}Skip å plassere:${ANSI.TEXT.BOLD_OFF}${ANSI.RESET}\n`,
         SPACES: `plasser`,
+        TURNS: {
+            P1: "Spiller 1 sin Tur'!",
+            P2: "Spiller 2 sin Tur!'"
+        },
+        PLAYER: "Spiller",
+        HIT: "Treff!",
+        MISS: "Bom!",
+        WINNER: {
+             P1: "Spiller 1 vinner!",
+             P2: "Spiller 2 vinner!"
+        },
         OUTPUT: {
             CONTROLS: `${ANSI.TEXT.BOLD}${ANSI.COLOR.YELLOW}Kontroller:${ANSI.TEXT.BOLD_OFF}${ANSI.RESET}\n`,
             MOVEMENT: 'Pil taster: Flytt indikator\n',
